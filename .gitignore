@@ -1,0 +1,22 @@
+# --- Python / Backend ---
+Backend/venv/
+__pycache__/
+*.pyc
+.env
+
+# --- Machine Learning Models ---
+# These are usually too large for standard GitHub
+Backend/modle.keras
+*.h5
+*.pkl
+
+# --- Flutter / Frontend ---
+frontend/.dart_tool/
+frontend/.packages
+frontend/.pub-cache/
+frontend/.pub/
+frontend/build/
+
+# --- OS Files ---
+.DS_Store
+Thumbs.db
