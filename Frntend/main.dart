@@ -40,7 +40,7 @@ class ObstacleDetectorApp extends StatelessWidget {
 
 // ─── Fallback when no camera hardware is available ─────────────────
 class _NoCameraApp extends StatelessWidget {
-  const _NoCameraApp({super.key});
+  const _NoCameraApp();
 
   @override
   Widget build(BuildContext context) {
