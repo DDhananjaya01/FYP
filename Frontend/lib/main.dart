@@ -1,62 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:camera/camera.dart';
+import 'screens/landing_page.dart';
 
-import 'camera_screen.dart';
-
-Future<void> main() async {
-  // Flutter binding must be initialised before calling any platform channel.
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Verify at least one camera exists before launching the app.
-  final List<CameraDescription> cameras = await availableCameras();
-  if (cameras.isEmpty) {
-    // No cameras — show an error screen.
-    runApp(const _NoCameraApp());
-    return;
-  }
-
-  runApp(ObstacleDetectorApp(cameras: cameras));
+void main() {
+  runApp(const MyApp());
 }
 
-class ObstacleDetectorApp extends StatelessWidget {
-  final List<CameraDescription> cameras;
-  const ObstacleDetectorApp({super.key, required this.cameras});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Obstacle Detector',
+      title: 'VoxEye',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.dark,
-        colorScheme: ColorScheme.dark(
-          primary: Colors.greenAccent,
-          secondary: Colors.amberAccent,
-        ),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.black),
+        useMaterial3: true,
       ),
-      home: CameraScreen(cameras: cameras),
-    );
-  }
-}
-
-// ─── Fallback when no camera hardware is available ─────────────────
-class _NoCameraApp extends StatelessWidget {
-  const _NoCameraApp();
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.black,
-        body: const Center(
-          child: Text(
-            'No camera available on this device.',
-            style: TextStyle(color: Colors.white70, fontSize: 18),
-            textAlign: TextAlign.center,
-          ),
-        ),
-      ),
+      home: const LandingPage(),
     );
   }
 }
